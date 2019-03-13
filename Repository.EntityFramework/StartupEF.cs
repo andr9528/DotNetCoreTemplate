@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Repository.Core;
 
 
 namespace Repository.EntityFramework
@@ -22,6 +23,9 @@ namespace Repository.EntityFramework
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<EntityRepository>(option => option.UseSqlServer(Configuration.GetConnectionString(ConnectionStringName)));
+
+            services.AddTransient(typeof(IGenericRepository), typeof(GenericEntityRepositoryHandler));
+            services.AddTransient(typeof(ISerializableRepository), typeof(SerializableEntityRepositoryHandler));
         }
     }
 
