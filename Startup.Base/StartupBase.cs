@@ -9,17 +9,15 @@ namespace Startup.Base
     {
         private IStartupEF _startupEf = null;
 
-        public StartupBase(IConfiguration configuration, string connectionStringName = "")
+        public StartupBase(string connectionStringName = "")
         {
-            Configuration = configuration;
-
             if (connectionStringName != "")
             {
                 _startupEf = new StartupEf(Configuration, connectionStringName); 
             }
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; protected set; }
 
         public void ConfigureServices(IServiceCollection services)
         {
