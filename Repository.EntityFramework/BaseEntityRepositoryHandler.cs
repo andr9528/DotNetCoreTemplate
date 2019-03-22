@@ -140,7 +140,8 @@ namespace Repository.EntityFramework
         internal bool AddYourDomainClass(IYourDomainClass y)
         {
             EntityEntry entry = null;
-
+            EntityState state = EntityState.Unchanged;
+            
             entry = repo.Add(y);
 
             state = CheckEntryState(state, entry);
@@ -159,7 +160,8 @@ namespace Repository.EntityFramework
         internal bool UpdateYourDomainClass(IYourDomainClass y)
         {
             EntityEntry entry = null;
-
+            EntityState state = EntityState.Unchanged;
+            
             entry = repo.Update(y);
 
             state = CheckEntryState(state, entry);
@@ -178,7 +180,8 @@ namespace Repository.EntityFramework
         internal bool DeleteYourDomainClass(IYourDomainClass y)
         {
             EntityEntry entry = null;
-
+            EntityState state = EntityState.Unchanged;
+            
             entry = repo.Remove(y);
 
             state = CheckEntryState(state, entry);
