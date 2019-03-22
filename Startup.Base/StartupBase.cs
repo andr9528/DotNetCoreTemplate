@@ -5,7 +5,7 @@ using System;
 
 namespace Startup.Base
 {
-    public class StartupBase : IStartupEF
+    public abstract class StartupBase : IStartupEF
     {
         private IStartupEF _startupEf = null;
 
