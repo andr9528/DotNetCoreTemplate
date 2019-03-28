@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Repository.EntityFramework;
 using System;
+using System.IO;
 
 namespace Startup.Base
 {
@@ -11,6 +12,10 @@ namespace Startup.Base
 
         public StartupBase(string connectionStringName = "")
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            
             if (connectionStringName != "")
             {
                 _startupEf = new StartupEf(Configuration, connectionStringName); 
