@@ -27,6 +27,9 @@ namespace Repository.EntityFramework.Config
             // Defining Primary Key -->
             builder.HasKey(s => s.Id);
             builder.Property(x => x.Id).HasColumnName("YourDomainClassId");
+			
+			// Defining Version as RowVersion -->
+            builder.Property(x => x.Version).IsRowVersion();
 
             // Defining whether or not a property is required 
                 // Takes in a false in the 'IsRequred' if one wish to make it not required
