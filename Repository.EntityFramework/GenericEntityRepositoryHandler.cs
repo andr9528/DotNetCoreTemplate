@@ -65,6 +65,8 @@ namespace Repository.EntityFramework
                 default:
                     throw new Exception("ERROR ERROR ERROR");
             }
+			
+			return result;
         }
 
         T IGenericRepository.Find<T>(T predicate)
